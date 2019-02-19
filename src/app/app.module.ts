@@ -11,6 +11,7 @@ import { ErrorComponent } from './error/error.component';
 import { ListTodosComponent } from './list-todos/list-todos.component';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
 
@@ -22,7 +23,8 @@ import { FooterComponent } from './footer/footer.component';
     ErrorComponent,
     ListTodosComponent,
     MenuComponent,
-    FooterComponent
+    FooterComponent,
+    LogoutComponent
   ],
 
   // the import section just states what things the components within this function need in order to work

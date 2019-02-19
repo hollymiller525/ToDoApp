@@ -9,22 +9,27 @@ export class HardcodedAuthenticationService {
 
 
   // creation of authenticate method
-  authentication(username, password){
-    console.log('before ' + this.isUserLoggedIn())
+  authentication(username, password) {
 
-    if(username==='in28minutes' && password==='dummy'){
+    if (username === 'in28minutes' && password === 'dummy') {
 
       // when user is added it sets in session storage
       sessionStorage.setItem('authenticaterUser', username);
-      console.log('after ' + this.isUserLoggedIn())
+
       return true;
-    } else{
+
+    } else {
       return false;
     }
   }
 
-  isUserLoggedIn(){
+  isUserLoggedIn() {
     let user = sessionStorage.getItem('authenticaterUser')
     return !(user === null)
+  }
+
+
+  logout(){
+    sessionStorage.removeItem('authenticaterUser')
   }
 }
