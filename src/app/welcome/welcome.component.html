@@ -1,3 +1,8 @@
+<br>
+<div class="alert alert-danger" *ngIf="errorMessage">
+  <strong>{{errorMessage}}</strong>
+</div>
+
 <h1>Welcome!</h1>
 
 <div class="container">
@@ -11,14 +16,14 @@
   <br>
   <br>
 
-  <button class="btn btn-success" (click)=getWelcomeMessage()> Click to get Message</button>
+  <button class="btn btn-success" (click)=getWelcomeMessageWithParameter()> Click to get Message</button>
 
   <br>
   <br>
 </div>
 
 <!-- the ng if here only shows the container is the welcomeMessageFromService has a value  -->
-<div class="container" *ngIf="welcomeMessageFromService">
+<div class="container" *ngIf="serviceSuccessfulMessage">
   <h2>Your Customized Welcome Message</h2>
-  {{welcomeMessageFromService}}
+  {{serviceSuccessfulMessage}}
 </div>

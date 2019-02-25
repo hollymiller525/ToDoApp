@@ -17,6 +17,8 @@ export class WelcomeComponent implements OnInit {
 
   name = ''
   welcomeMessageFromService: string
+  errorMessage: string
+  serviceSuccessfulMessage: string
 
   // public ConstructorName(){ }
   constructor(
@@ -29,19 +31,34 @@ export class WelcomeComponent implements OnInit {
   }
 
   getWelcomeMessage() {
-    console.log(this.service.executeHelloWorldBeanService());
-
     // this is an example of an observable
     this.service.executeHelloWorldBeanService().subscribe(
-      response => this.handleSuccessfulResponse(response)
-    );
+      response => this.handleSuccessfulResponse(response),
 
-    console.log('last line of getWelcomeMessage')
+      //specifying a common error response - if there is an error do the following
+      error => this.handleErrorResponse(error)
+    );
   }
 
-
   handleSuccessfulResponse(response) {
+    // grabbing the response from the web service
     this.welcomeMessageFromService = response.message
+
+    this.serviceSuccessfulMessage = response.message
+  }
+
+  handleErrorResponse(error) {
+    // grabbing the error message from the web service
+    this.welcomeMessageFromService = error.error.message
+    this.errorMessage = error.error.message
+  }
+
+  // this method ensures that path variable is inserted into the http web service
+  getWelcomeMessageWithParameter() {
+    this.service.executeHelloWorldServiceWithPathVariable(this.name).subscribe(
+      response => this.handleSuccessfulResponse(response),
+      error => this.handleErrorResponse(error)
+    )
   }
 }
 
