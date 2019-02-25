@@ -45,18 +45,18 @@ export class ListTodosComponent implements OnInit {
   //     description: 'Learn to Dance'
   // }
 
-  message: string 
+  message: string
 
   constructor(
     private todoService: TodoDataService,
     private router: Router
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.refreshTodos();
   }
 
-  refreshTodos(){
+  refreshTodos() {
     // when hitting a http method make sure to always return back as observable 
     this.todoService.retrieveAllTodos('in28minutes').subscribe(
       response => {
@@ -78,7 +78,13 @@ export class ListTodosComponent implements OnInit {
     )
   }
 
-  updateTodo(id){
+  updateTodo(id) {
     this.router.navigate(['todos', id]);
+  }
+
+  addTodo(id) {
+
+    // by putting -1 we are saying we don't want any data in the form as we are trying to create a new todo
+    this.router.navigate(['todos', -1]);
   }
 }

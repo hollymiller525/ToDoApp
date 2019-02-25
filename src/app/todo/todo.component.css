@@ -1,0 +1,5 @@
+
+/* default angular class that goes on any invalid fields */
+.ng-invalid:not(form) {
+    border-left: 5px solid red;
+}

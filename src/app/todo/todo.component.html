@@ -3,24 +3,29 @@
 
 <div class="container">
 
-  <fieldset class="form-group">
-    <label>Description</label>
+  <div class="alert alert-warning" *ngIf="todoForm.dirty && targetDescription.invalid">Enter valid values!</div>
+  <div class="alert alert-warning" *ngIf="targetDescription.invalid">Enter valid values, needs at least 5 characters!</div>
 
-    <!-- using the banana in a box here to map the correct data -->
-    <input type="text" [(ngModel)]="todo.description" class="form-control" name="description" required="required">
-  </fieldset>
+  <!-- ngSubmit means when this form in submitted call this method -->
+  <form (ngSubmit)="!todoForm.invalid && saveTodo()" #todoForm="ngForm">
+    <fieldset class="form-group">
+      <label>Description</label>
 
-  <br>
+      <!-- using the banana in a box here to map the correct data -->
+      <input type="text" [(ngModel)]="todo.description" #targetDescription="ngModel" class="form-control" name="description" required="required" minlength="5">
+    </fieldset>
 
-  <fieldset class="form-group">
-    <label>Target Date</label>
-    <input type="date" 
-    [ngModel]="todo.targetDate | date:'yyyy-MM-dd'"
-    (ngModelChange)="todo.targetDate = $event"
-    class="form-control" name="targetDate" required="required">
-  </fieldset>
+    <br>
 
+    <fieldset class="form-group">
+      <label>Target Date</label>
+      <input type="date" [ngModel]="todo.targetDate | date:'yyyy-MM-dd'" (ngModelChange)="todo.targetDate = $event"
+        class="form-control" name="targetDate" required="required">
+    </fieldset>
 
-  <button class="btn btn-success" (click)="saveTodo()">Save</button>
+    <!-- when you have a submit button in a form you don't have to handle and click button but instead on the form -->
+    <button type="submit" class="btn btn-success">Save</button>
+  </form>
 </div>
+
 

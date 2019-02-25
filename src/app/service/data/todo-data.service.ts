@@ -32,4 +32,12 @@ export class TodoDataService {
     // the url here is passing three arguements ( username, id and the body(todo))
     return this.http.put(`http://localhost:8181/users/${username}/todos/${id}`, todo)
   }
+
+  // the todo needs to be passed to ensure that the details of the todo are updated
+  createTodo(username, todo) {
+
+    // the url here is passing two arguements ( username, the body(todo))
+    // the id is not present in this uri as you are creating the todo so doesn't have a id to search for
+    return this.http.post(`http://localhost:8181/users/${username}/todos`, todo)
+  }
 }
