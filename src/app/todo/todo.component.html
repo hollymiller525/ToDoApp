@@ -4,7 +4,7 @@
 <div class="container">
 
   <div class="alert alert-warning" *ngIf="todoForm.dirty && targetDescription.invalid">Enter valid values!</div>
-  <div class="alert alert-warning" *ngIf="targetDescription.invalid">Enter valid values, needs at least 5 characters!</div>
+  <div class="alert alert-warning" *ngIf="targetDescription.invalid">Enter at least 5 characters in description!</div>
 
   <!-- ngSubmit means when this form in submitted call this method -->
   <form (ngSubmit)="!todoForm.invalid && saveTodo()" #todoForm="ngForm">
