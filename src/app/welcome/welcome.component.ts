@@ -57,7 +57,10 @@ export class WelcomeComponent implements OnInit {
   getWelcomeMessageWithParameter() {
     this.service.executeHelloWorldServiceWithPathVariable(this.name).subscribe(
       response => this.handleSuccessfulResponse(response),
-      error => this.handleErrorResponse(error)
+      error => { 
+        this.handleErrorResponse(error) 
+      },
+
     )
   }
 }

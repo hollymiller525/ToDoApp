@@ -25,30 +25,30 @@ export class WelcomeDataService {
   // creating a get request that passes a path variable
   executeHelloWorldServiceWithPathVariable(name) {
 
-    let basicAuthHeaderString = this.createBasicAuthenticationHttpHeader();
+    // let basicAuthHeaderString = this.createBasicAuthenticationHttpHeader();
 
-    //creating an instance of a http header
-    let header = new HttpHeaders(
-      // can provide an object 
-      {
-        // the type of header you want to send
-        Authorization: basicAuthHeaderString
-      }
-    )
-    return this.http.get<HelloWorldBean>(`http://localhost:8181/hello-world/path-variable/${name}`, 
-    // the first header is a constant and the other header represents the variable header
-    {headers :  header}
+    // //creating an instance of a http header
+    // let header = new HttpHeaders(
+    //   // can provide an object 
+    //   {
+    //     // the type of header you want to send
+    //     Authorization: basicAuthHeaderString
+    //   }
+    // )
+    return this.http.get<HelloWorldBean>(`http://localhost:8181/hello-world/path-variable/${name}`
+    // // the first header is a constant and the other header represents the variable header
+    // {headers :  header}
     )
   }
 
 
-  createBasicAuthenticationHttpHeader() {
-    let username = 'in28minutes'
-    let password = 'dummy'
+  // createBasicAuthenticationHttpHeader() {
+  //   let username = 'in28minutes'
+  //   let password = 'dummy'
 
-    // Windows base 64 format string
-    let basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password)
+  //   // Windows base 64 format string
+  //   let basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password)
 
-    return basicAuthHeaderString;
-  }
+  //   return basicAuthHeaderString;
+  // }
 }
